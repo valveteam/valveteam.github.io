@@ -1,0 +1,39 @@
+nav.main {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+
+  > ul.menu {
+    height: $header-size;
+
+    > li > a {
+      line-height: $header-size;
+      padding: 0 1rem;
+    }
+  }
+
+  li a {
+    font-weight: 300;
+  }
+
+  ul.submenu {
+    margin-top: -40px;
+  }
+
+  .github-link {
+    line-height: $header-size;
+    padding: 0 1rem;
+  }
+}
+
+ul.menu:hover li a {
+  color: $anchor-color-hover;
+
+  &:hover {
+    color: $anchor-color;
+  }
+}
+
+nav.main > ul.menu > li.is-dropdown-submenu-parent > a::after {
+  display: none;
+}

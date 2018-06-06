@@ -1,0 +1,59 @@
+{% extends "layout.njk" %}
+
+{% from "macros/banner.njk" import banner %}
+{% from "macros/module-card.njk" import card %}
+
+{% block head %}
+<title>{{ site.title }}</title>
+{% endblock %}
+
+{% block content %}
+<div class="grid-container">
+    <div class="grid-x grid-margin-x">
+        <div class="cell auto page-titles">
+            <h1>Solar-Controlled Valve</h1>
+            <h2>Enabling solar-powered water purification systems</h2>
+        </div>
+    </div>
+</div>
+
+{{ banner('images/valve_test.png', 'Solar Valve Testing') }}
+
+<div class="grid-container">
+    <div class="grid-x grid-margin-x add-spacing">
+        <div class="cell small-6">
+            <h1>Majico Partner</h1>
+            <h2>Photocatalysts to mitigate contaminated water sources</h2>
+        </div>
+
+        <div class="cell small-6">
+            <p>We've been acting as a partner to Majico, whose work has produced a photocatalytic reactor which is able to degrade a wide range of contaminants from a water source.</p>
+            <p>The efficiency of the reactor depends on the intensity of sunlight. On an overcast day or during the night, is contaminated water still making it through?</p>
+            <p>A method of modulating the flow rate into the reactor depending on the intensity of sunlight is required, that's where we come in.</p>
+            <p>Our solution is a digital electronic system and solenoid valve that together provide a fail-safe, reliable and robust means to adjust the flow rate into the photocatalytic reactor.</p>
+        </div>
+    </div>
+
+    <div class="grid-x grid-margin-x">
+        <div class="cell auto">
+            {% include "partials/statistics.njk" %}
+        </div>
+    </div>
+</div>
+
+<div class="grid-container">
+    <div class="grid-x grid-margin-x add-spacing">
+        <div class="cell small-4">
+            {{ card('images/flow-module.png', 'Flow Module', 'copy/flow_module_descriptor.md', '/flow.html', 'Flow Module Circuit Board') }}
+        </div>
+
+        <div class="cell small-4">
+            {{ card('images/control-module.png', 'Control Module', 'copy/control_module_descriptor.md', '/control.html', 'Control Module Circuit Board') }}
+        </div>
+
+        <div class="cell small-4">
+            {{ card('images/lighting-module.png', 'Light Sensor Module', 'copy/light_module_descriptor.md', '/lighting.html', 'Light Module Circuit Board') }}
+        </div>
+    </div>
+</div>
+{% endblock %}

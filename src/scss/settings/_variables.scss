@@ -1,0 +1,32 @@
+// sizing variables
+$header-size: 120px;
+
+// color related variables
+$anchor-color: $black;
+$anchor-color-hover: $dark-gray;
+$dropdown-menu-item-color-active: $anchor-color-hover;
+
+// typography variables
+$body-font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
+$header-font-family: 'Merriweather', sans-serif;
+$body-font-color: $dark-gray;
+$header-color: $black;
+
+$header-styles: (
+        small: (
+                'h1': ('font-size': 24),
+                'h2': ('font-size': 20),
+                'h3': ('font-size': 19),
+                'h4': ('font-size': 18),
+                'h5': ('font-size': 17),
+                'h6': ('font-size': 16),
+        ),
+        medium: (
+                'h1': ('font-size': 40),
+                'h2': ('font-size': 31),
+                'h3': ('font-size': 25),
+                'h4': ('font-size': 20),
+                'h5': ('font-size': 16),
+                'h6': ('font-size': 12),
+        ),
+);

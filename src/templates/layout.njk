@@ -1,0 +1,28 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+  {% block head %}{% endblock %}
+  {% include "partials/head.njk" %}
+</head>
+
+<body>
+  <!-- Add your site or application content here -->
+  {% include "partials/header/header.njk" %}
+
+  <main class="content">
+      {% block content %}{% endblock %}
+  </main>
+
+  <script src="scripts/lib/jquery.min.js"></script>
+  <script src="scripts/lib/foundation.core.min.js"></script>
+  <script src="scripts/lib/foundation.util.mediaQuery.min.js"></script>
+  <script src="scripts/lib/foundation.util.keyboard.min.js"></script>
+  <script src="scripts/lib/foundation.util.box.min.js"></script>
+  <script src="scripts/lib/foundation.util.nest.min.js"></script>
+  <script src="scripts/lib/foundation.dropdown.min.js"></script>
+  <script src="scripts/lib/foundation.dropdownMenu.min.js"></script>
+  <script src="scripts/main.min.js"></script>
+</body>
+
+</html>

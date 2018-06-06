@@ -1,0 +1,28 @@
+{% extends "layout.njk" %}
+
+{% from "macros/banner.njk" import banner %}
+
+{% block head %}
+    <title>{{ site.title }} | Lighting Module</title>
+{% endblock %}
+
+{% block content %}
+    <div class="grid-container">
+        <div class="grid-x grid-margin-x">
+            <div class="cell auto page-titles">
+                <h1>Light Sensor Module</h1>
+                <h2>Detecting the ambient light level</h2>
+            </div>
+        </div>
+    </div>
+
+    {{ banner('images/lighting-module.png', 'Lighting Module Circuit Board') }}
+
+    <div class="grid-container">
+        <div class="grid-x grid-margin-x">
+            <div class="cell auto">
+                {% markdown "docs/submodules/light_module.md" %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

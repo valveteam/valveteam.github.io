@@ -1,0 +1,3 @@
+[submodule "md/docs"]
+	path = md/docs
+	url = https://github.com/valveteam/documentation

@@ -1,0 +1,1 @@
+The flow rate module is an integral sub-module which modules flow rate dependent on some input. It consists of two main components. The flow is passively modulated using a solenoid valve, and an H-bridge will allow the control module to interface with the flow module. The H-bridge serves to drive enough current to the solenoid valve to open or close it.

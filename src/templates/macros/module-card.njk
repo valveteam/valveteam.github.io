@@ -1,0 +1,8 @@
+{% macro card(image, title, contentFile, url, alt='') %}
+    <div class="module-card">
+        <img src="{{ image }}" alt="{{ alt }}">
+        <h4>{{ title }}</h4>
+        <p>{% markdown contentFile %}</p>
+        <a href="{{ url }}">Find Out More</a>
+    </div>
+{% endmacro %}

@@ -1,0 +1,28 @@
+{% extends "layout.njk" %}
+
+{% from "macros/banner.njk" import banner %}
+
+{% block head %}
+    <title>{{ site.title }} | Flow Module</title>
+{% endblock %}
+
+{% block content %}
+    <div class="grid-container">
+        <div class="grid-x grid-margin-x">
+            <div class="cell auto page-titles">
+                <h1>Flow Module</h1>
+                <h2>Driving the valve's response</h2>
+            </div>
+        </div>
+    </div>
+
+    {{ banner('images/flow-module.png', 'Flow Module Circuit Board') }}
+
+    <div class="grid-container">
+        <div class="grid-x grid-margin-x">
+            <div class="cell auto">
+                {% markdown "docs/submodules/flow_control_module.md" %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

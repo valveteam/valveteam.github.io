@@ -1,0 +1,33 @@
+.page-numbers {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 1em;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  color: #FFF;
+  transform: translateY(.5rem);
+
+  &:after {
+    content: '/ ' attr(data-total);
+    font-size: 1rem;
+    position: absolute;
+    top: 0;
+    left: 4.2rem;
+    opacity: 0.7;
+  }
+}
+
+.page-number {
+  display: inline-block;
+  line-height: 1.15;
+
+  &.-ones {
+    transform: translateY(
+                    calc((var(--total) - var(--scene))
+                    * (100% / var(--total)))
+    );
+  }
+}

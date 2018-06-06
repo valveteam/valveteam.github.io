@@ -1,0 +1,27 @@
+// import the normalize stylesheet
+@import "../../node_modules/normalize.css/normalize.css";
+
+// import foundation settings
+@import "settings/foundation";
+
+// import the local variables for the project, which should override the foundation settings
+@import "settings/variables";
+
+// import foundation itself
+@import "foundation";
+@include foundation-everything;
+
+// import the base styles
+@import "base/base";
+
+// import components
+@import "components/banner";
+@import "components/header";
+@import "components/layout";
+@import "components/logo";
+@import "components/module-card";
+@import "components/navigation";
+@import "components/statistics";
+
+// import typography stylesheets
+@import "typography/headings";

@@ -1,0 +1,19 @@
+$banner-spacing: 60px;
+
+.banner {
+  height: 800px;
+  overflow: hidden;
+  position: relative;
+  white-space: nowrap;
+  margin: $banner-spacing 0 $banner-spacing calc((100% - 1170px) / 2);
+
+  img {
+    min-width: 100%;
+    position: absolute;
+    top: -9999px;
+    bottom: -9999px;
+    left: -9999px;
+    right: -9999px;
+    margin: auto;
+  }
+}

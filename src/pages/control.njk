@@ -1,0 +1,28 @@
+{% extends "layout.njk" %}
+
+{% from "macros/banner.njk" import banner %}
+
+{% block head %}
+    <title>{{ site.title }} | Control Module</title>
+{% endblock %}
+
+{% block content %}
+    <div class="grid-container">
+        <div class="grid-x grid-margin-x">
+            <div class="cell auto page-titles">
+                <h1>Control Module</h1>
+                <h2>Central hub of the solar-controlled valve system</h2>
+            </div>
+        </div>
+    </div>
+
+    {{ banner('images/control-module.png', 'Control Module Circuit Board') }}
+
+    <div class="grid-container">
+        <div class="grid-x grid-margin-x">
+            <div class="cell auto">
+                {% markdown "docs/submodules/control_module.md" %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

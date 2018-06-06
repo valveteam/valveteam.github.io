@@ -1,0 +1,15 @@
+.logo {
+  line-height: $header-size;
+  font-size: 1.3em;
+
+  span {
+    display: inline-block;
+    font-family: 'Open Sans', sans-serif;
+    color: $dark-gray;
+  }
+
+  span.team {
+    font-weight: 600;
+    color: $black;
+  }
+}
