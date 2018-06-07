@@ -1,0 +1,26 @@
+{% extends "layout.njk" %}
+
+{% from "macros/banner.njk" import banner %}
+
+{% block head %}
+    <title>{{ site.title }} | Enclosures</title>
+{% endblock %}
+
+{% block content %}
+    <div class="grid-container">
+        <div class="grid-x grid-margin-x">
+            <div class="cell auto page-titles">
+                <h1>Enclosures</h1>
+                <h2>Protecting our systems from the elements</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid-container">
+        <div class="grid-x grid-margin-x">
+            <div class="cell auto">
+                {% markdown "docs/overall/system_enclosures.md" %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

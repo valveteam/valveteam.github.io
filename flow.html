@@ -42,19 +42,26 @@
             <div class="cell auto">
                 <nav class="main">
     <ul class="dropdown menu" data-dropdown-menu>
-        <li><a href="#">About</a></li>
+        <li><a href="/overview.html">Overview</a></li>
         <li>
             <a href="#">Docs</a>
             <ul class="menu">
                 <li><a href="/control.html">Control Module</a></li>
                 <li><a href="/flow.html">Flow Module</a></li>
                 <li><a href="/lighting.html">Lighting Module</a></li>
+                <li><a href="/enclosures.html">Initial Enclosures</a></li>
             </ul>
         </li>
+        <li><a href="/principles.html">Principles</a></li>
+        <li><a href="/teamwork.html">Teamwork</a></li>
     </ul>
 
-    <a href="https://www.github.com/valveteam" class="github-link">
+    <a href="https://www.github.com/valveteam" class="icon-link github-link">
         <i class="fab fa-github"></i>
+    </a>
+
+    <a href="https://drive.google.com/open?id=1tVCJ_OA8gJL3nt0VkBkX7JLoFxgfmyr1" class="icon-link google-drive-link">
+        <i class="fab fa-google-drive"></i>
     </a>
 </nav>
 
@@ -76,7 +83,7 @@
     </div>
 
     
-    <div class="banner">
+    <div class="banner small normal">
         <img src="images/flow-module.png" alt="Flow Module Circuit Board">
     </div>
 
@@ -84,11 +91,15 @@
     <div class="grid-container">
         <div class="grid-x grid-margin-x">
             <div class="cell auto">
-                <hr>
-<p>author: Mrinank Sharma
-lastUpdated: 4-06-2018</p>
-<h2 id="email-ms2314-cam-ac-uk">email: <a href="mailto:ms2314@cam.ac.uk">ms2314@cam.ac.uk</a></h2>
-<h1 id="flow-control-module">Flow Control Module</h1>
+                
+      <article class="markdown">
+        
+        <div class="frontmatter">
+           <p class="author">By <a href="mailto:ms2314@cam.ac.uk">Mrinank Sharma</a></p>
+           <p class="updated">Last Updated June 6th 2018</p>
+        </div>
+      
+        <h1 id="flow-control-module">Flow Control Module</h1>
 <!-- TOC -->
 
 <ul>
@@ -133,12 +144,14 @@ lastUpdated: 4-06-2018</p>
 </li>
 </ul>
 </li>
+<li><a href="#thats-all-from-me">That&#39;s all from me!</a></li>
 </ul>
 </li>
 </ul>
 <!-- /TOC -->
+
 <h2 id="introduction">Introduction</h2>
-<p>As you may already know, the purpose of this project is (in short) to develop a method of controlling water flow rate depending on light intensity levels (there is a lot more to it than this - see <a href="www.google.co.uk">the overview</a>). The flow rate module (as the name might suggest) is an integral sub-module which modules flow rate dependent on some input. </p>
+<p>As you may already know, the purpose of this project is (in short) to develop a method of controlling water flow rate depending on light intensity levels (there is a lot more to it than this - see <a href="https://valveteam.github.io/">the overview</a>). The flow rate module (as the name might suggest) is an integral sub-module which modules flow rate dependent on some input. </p>
 <p>The purpose of this document is two-fold; not only should it aid you in understanding and using the final implementation that we chose for this sub-module but also details the design process to understand the reasoning behind the decisions that we made. </p>
 <h2 id="the-design-process">The Design Process</h2>
 <h3 id="technical-specification">Technical Specification</h3>
@@ -164,8 +177,8 @@ lastUpdated: 4-06-2018</p>
 </tr>
 <tr>
 <td align="center">Functionality</td>
-<td align="center">The system <em>must</em> be able to cope with flow rates exceeding 6 L/hour.</td>
-<td align="center">Given by the Majico photocatalyst flow rate (see specification - add link!)</td>
+<td align="center">The system <em>must</em> be able to cope with flow rates up to 6 L/hour.</td>
+<td align="center">Given by the Majico photocatalyst flow rate.</td>
 </tr>
 <tr>
 <td align="center">Usability</td>
@@ -200,10 +213,9 @@ lastUpdated: 4-06-2018</p>
 </tbody></table>
 <h3 id="brainstorming">Brainstorming</h3>
 <h4 id="how-can-we-control-the-flow-"><strong>How can we control the flow?</strong></h4>
-<p>The key decision to make is how to module the flow of fluid. Two possible methods of controlling flow rate are as outlined below. </p>
+<p>The key decision to make is how to module the flow of fluid. Two possible methods of controlling flow rate are outlined below. </p>
 <ol>
-<li><p>Active Control\
-Fluid can be kept in a reservoir and <em>pumped</em> directly to another location.</p>
+<li><p>Active Control<br>Fluid can be kept in a reservoir and <em>pumped</em> directly to another location.</p>
 <p> Advantages:</p>
 <ul>
 <li>Fail-safe. Without power, fluid is unable to flow (assuming the flow is initially at rest). </li>
@@ -213,15 +225,14 @@ Fluid can be kept in a reservoir and <em>pumped</em> directly to another locatio
 <li>High power consumption.</li>
 </ul>
 </li>
-<li><p>Passive Control\
-If fluid is already flowing, its flow can be hindered or slowed down in order to control the flow rate e.g. by moving a plate across a pipe. </p>
+<li><p>Passive Control<br>If fluid is already flowing, its flow can be hindered or slowed down in order to control the flow rate e.g. by moving a plate across a pipe. </p>
 <p> Advantages:</p>
 <ul>
 <li>Energy is not expended in moving fluid. It is easy to create fluid flow (e.g. by holding a reservoir at a height) and thus energy expenditure on movement is wasteful. </li>
 <li><p>Easy to create/find (e.g. spring-loaded) systems that are closed when there is no power input and are thus fail-safe. </p>
 <p>Disadvantages:</p>
 </li>
-<li>Need to account for accumulation of fluid at the valve input. </li>
+<li>Need to account for possible accumulation of fluid at the valve input. </li>
 <li>Need fluid flow. </li>
 <li><p>No direct control over instantaneous fluid velocity/flow rate. </p>
 <p>This method lends itself better to purely mechanical solutions compared to active control. For example, a block of material could expand when heated (suggesting the presence of sunlight) and then block flow rate through a bypass pipe (thus perhaps increasing the flow rate through another pipe). However, at this stage of the design, an electrical approach had already been chosen. </p>
@@ -230,16 +241,16 @@ If fluid is already flowing, its flow can be hindered or slowed down in order to
 </li>
 </ol>
 <h4 id="so-why-use-a-valve-"><strong>So why use a valve?</strong></h4>
-<p>The high power draw associated with active control led the team to choose a passive option for flow control. Given that it is very easy to create a fluid flow by holding fluid in an elevated reservoir and that fail-safe solenoid valves are readily available, it was decided that this form of flow control would be appropriate for this project. </p>
+<p>Given that it is very easy to create a fluid flow by holding fluid in an elevated reservoir and that fail-safe solenoid valves are readily available, it was decided that this form of flow control would be appropriate for this project. </p>
 <h4 id="powering-the-valve"><strong>Powering the valve</strong></h4>
 <p>Common microcontrollers are very limited in the currents that they are able to supply through their GPIO (general purpose input-output) pins. For example, the Arduino Uno has a maximum D.C. current of 20 mA per I/O (input/output) pin corresponding to a maximum power of 0.1 W (at 5V) (<a href="https://store.arduino.cc/usa/arduino-uno-rev3">Technical Specs Here</a>). Typical valves have power draws <em>at least</em> an order of magnitude greater than this and thus additional circuitry is required to allow the microcontroller to interface with components which require much high currents. </p>
-<p>A simple way of performing this interfacing is to use a <a href="https://en.wikipedia.org/wiki/H_bridge"><em>H-Bridge</em></a> which is commonly used for bi-directional control of motors. These components are available as a standard package (the <code>L298P</code> is common) and these packages provide additional advantages over using a transistor current amplifier such as overtemperature protection. </p>
+<p>A simple way of performing this interfacing is to use a <a href="https://en.wikipedia.org/wiki/H_bridge"><em>H-Bridge</em></a> which is commonly used for bi-directional control of motors. These components are available as a standard package (the <code>L298P</code> is common) and these packages provide additional advantages over using a transistor current amplifier such as overtemperature protection. These packages are very often used with common hobby microcontrollers (e.g. Arduinos) and this is one of the reasons we chosen them. </p>
 <h4 id="interfacing-with-other-modules"><strong>Interfacing with other modules</strong></h4>
-<p>The valve must be controlled using the control submodule (<a href="www.google.co.uk/"><em>documentation here</em></a>). H-Bridges require digital inputs in order to control their outputs; that&#39;s to say, if the voltage is above a certain threshold (dependent on the specific H-Bridge used), it is considered to be on. Thus GPIO pins from this module can be connected directly to the input pins of any H-Bridge input (especially because distances between these modules are unlikely to be particularly large). Note that some H-Bridges require an logic voltage input (typically around 5V, used to power logic circuits) and this can come directly from the control module whilst the high voltage supply is provided using a seperate, high voltage rail. </p>
+<p>The valve must be controlled using the control submodule (<a href="https://valveteam.github.io/control.html"><em>documentation here</em></a>). H-Bridges require digital inputs in order to control their outputs; that&#39;s to say, if the voltage is above a certain threshold (dependent on the specific H-Bridge used), it is considered to be on. Thus GPIO pins from this module can be connected directly to the input pins of any H-Bridge input (especially because distances between these modules are unlikely to be particularly large). Note that some H-Bridges require a logic voltage input (typically around 5V, used to power logic circuits) and this can come directly from the control module whilst the high voltage supply is provided using a separate, high voltage rail. </p>
 <h3 id="design-summary">Design Summary</h3>
-<p>In summar, the key aspects of the system designed are:</p>
+<p>In summary, the key aspects of the system designed are:</p>
 <ol>
-<li>The flow will be moduled using a solenoid valve. </li>
+<li>The flow will be modulated using a solenoid valve. </li>
 <li>A H-Bridge will allow the control module to interface with the flow-control module.  </li>
 </ol>
 <h2 id="our-implementation">Our Implementation</h2>
@@ -257,20 +268,20 @@ If fluid is already flowing, its flow can be hindered or slowed down in order to
 <li>There are two different H-Bridge chips; the <a href="https://www.sparkfun.com/datasheets/Robotics/L298_H_Bridge.pdf"><code>L298P</code> (click for the datasheet)</a> is a standard part, commonly used for hobby electronics and is fairly cheap. <a href="http://www.ti.com/lit/ds/symlink/lmd18201.pdf"><code>LMD18021T</code></a> which is about twice the price of the <code>L298P</code> but is more robust in terms of the input voltages it accepts and incorporates some advanced features such as a thermal flag output. Both were placed on the same board to allow each to be tested simultaneously. For each, a terminal block connects the output to the solenoid valve. </li>
 <li>A terminal block is used to connect the circuit to the power supply. </li>
 <li>6-Pin Molex KK connectors are used to interface between the flow control module and the control module.</li>
-<li>There are three indicator LEDS; one to show power from the main power supply (e.g. solar panel), the other two indicate which H-Bridge chip is being used. </li>
+<li>There are three indicator LEDs; one to show power from the main power supply (e.g. a solar panel), the other two indicate which H-Bridge chip is being used. </li>
 </ul>
 <h3 id="the-pcb">The PCB</h3>
 <p><img src="https://raw.githubusercontent.com/valveteam/documentation/master/submodules/flow_control_res/pcb-annotated.png" alt="Flow Control Module - PCB"></p>
 <p>The image above shows the PCB layout. Please note the following:</p>
 <ul>
 <li>Ground planes are <strong>not</strong> shown. </li>
-<li>The dimensions of the circuit board are (INSERT CORRECT DIMENSIONS HERE).</li>
+<li>The dimensions of the circuit board are 59 by 47 mm. </li>
 <li>The terminal block connecting the PCB to the main power supply is in the top left of the board. </li>
 <li>The terminal blocks connecting the PCB to each solenoid valve are on the left of the board. The valves do not have a polarity and thus can be connected either way around. </li>
 <li><strong>There is an error with this PCB</strong> - the ground pad of the L298P chip should be connected to the ground plane but it is not. </li>
 <li>In our implementation, each of the status LEDs has been given a different colour.</li>
 </ul>
-<p><img src="https://raw.githubusercontent.com/valveteam/documentation/master/submodules/flow_control_res/molex-pinout.png" alt="Molex Pinout">.</p>
+<p><img src="https://raw.githubusercontent.com/valveteam/documentation/master/submodules/flow_control_res/molex-pinout.png" alt="Molex Pinout"></p>
 <p>The diagram above shows how the Molex KK connectors should be interfaced with other components. Molex KK diagrams reproduced from <a href="http://www.mroelectronics.com/mro/product.php?id_product=11670">MRO Electronics</a> and <a href="https://uk.rs-online.com/web/p/pcb-headers/4838506">RS</a>.</p>
 <h3 id="the-3d-model">The 3D Model</h3>
 <p><img src="https://raw.githubusercontent.com/valveteam/documentation/master/submodules/flow_control_res/flow-module-3d-model.png" alt="Flow Control Module - 3D Module"></p>
@@ -281,7 +292,7 @@ If fluid is already flowing, its flow can be hindered or slowed down in order to
 <li><a href="http://cpc.farnell.com/adafruit/997/solenoid-valve-plastic-water-12v/dp/SW04771">Adafruit Solenoid Valve</a>. This valve has a minimum pressure requirement of 0.03 MP and <strong>liquid</strong> can only flow in one direction. </li>
 <li><a href="https://uk.rs-online.com/web/p/solenoid-valves/0342023/">RS Hydralectic Solenoid Valve</a>. This has a higher minimum pressure requirement but is unidirectional. </li>
 </ol>
-<p>The maximum flow rate for each valve is well above typical photocatalyst flow rates (around 6 L/hour). </p>
+<p>The valve operating flow rates are well above the maximum photocatalyst flow rate (around 6 L/hour). </p>
 <p>Any solenoid valve can be used with the above PCB. </p>
 <h3 id="controlling-the-valves">Controlling the Valves</h3>
 <p>In order to control the valves using the H-Bridges on the PCB, the required inputs must be understood. Correct connections must first be ensured (according to the Molex KK pinout diagram).</p>
@@ -456,10 +467,10 @@ If fluid is already flowing, its flow can be hindered or slowed down in order to
 <li>The power draw is determined by the ohmic (real) part of the solenoid resistance, suspected to be characterised by the resistance of the inductor coils. The resistance of the Adafruit valve is smaller and thus when a fixed voltage is applied across the terminal ends, the power draw is higher (since P = V<sup>2</sup>/R). </li>
 <li>The RS Hydraelectric valve is able to actuate at voltages exceeding 4V whilst the Adafruit valve actuates at voltages exceeding 5V.</li>
 <li>The Adafruit valve requires a lower pressure in order to drive flow through the valve (this was determined heuristically by attempting to push air through each valve). </li>
-<li>As the voltage applied to the valve increases, the power draw increases without confering any significant advantage. Therefore, <strong>it may be advantageous to step down the input voltage into the valve</strong> to reduce power consumption. This will still require a H-Bridge driver due to the high currents involved. </li>
+<li>As the voltage applied to the valve increases, the power draw increases without conferring any significant advantage. Therefore, <strong>it may be advantageous to step down the input voltage into the valve</strong> to reduce power consumption. This will still require a H-Bridge driver due to the high currents involved. </li>
 </ul>
 <h3 id="h-bridge-testing">H-Bridge Testing</h3>
-<p>The power draw of each H-Bridge when idle and when powering the valve was determined (the power draw the each valve at a given voltage can be determined by using the results of the previous experiment). Please see <a href="https://docs.google.com/spreadsheets/d/1D01eadC7LQ3DVaPIUEnMTHFYi2akVzcx9Xcpumab2Tw/edit?usp=sharing">this spreadsheet</a> for more details of the calculations. </p>
+<p>The power draw of each H-Bridge when idle and when powering the valve was determined (the power draw of each valve at a given voltage can be determined by using the results of the previous experiment). Please see <a href="https://docs.google.com/spreadsheets/d/1D01eadC7LQ3DVaPIUEnMTHFYi2akVzcx9Xcpumab2Tw/edit?usp=sharing">this spreadsheet</a> for more details of the calculations. </p>
 <p>The power draw of <strong>both</strong> H-bridges when idle is around 0.24 W - due to the circuitry implemented, it is difficult to determine which H-Bridge is consuming more energy. <strong>However, it was discovered that the <code>L298P</code></strong> <strong>was faulty</strong> and thus an <a href="https://www.amazon.co.uk/Controller-Module-Bridge-Stepper-Arduino/dp/B00HNHUYSG/ref=sr_1_3?ie=UTF8&amp;qid=1528128342&amp;sr=8-3&amp;keywords=H-Bridge">alternative H-Bridge</a> was used to calculate these powers. It is assumed (naively) that the idle H-Bridge draw is the same for each package in order to calculate the power requirement for all the additional circuitry of the alternative circuit. </p>
 <p>The conclusions of this experiment were:</p>
 <ul>
@@ -470,15 +481,15 @@ If fluid is already flowing, its flow can be hindered or slowed down in order to
 <h3 id="refining-our-design">Refining Our Design</h3>
 <p>The design and implementation produced worked well for our purposes. If the board were to be redesigned for the final product, the following changes would be made:</p>
 </li>
-<li><p>Only use a single H-Bridge. </p>
+<li><p><strong>Ditch the H-Bridge!</strong> Even the cheaper H-Bridge above can cost about £3.00. The key advantage with a H-Bridge is bi-directional control but this is not advantageous. This could be replaced with a MOSFET and protection diode which can reduce to the cost to about 40p. There is good documentation and resources for this online e.g. <a href="https://electronics.stackexchange.com/questions/244217/mosfet-as-a-switch-to-control-12-solenoid-valves-using-arduino">this StackExchange article</a> is exactly the use case here. </p>
 </li>
 <li><p>Change the <code>L298P</code> package used; the surface mount package used (<code>PowerSO20</code>) was difficult to solder (due to the ground plane). A through-hole package can be found and is cheaper (e.g. <a href="https://uk.rs-online.com/web/p/motor-driver-ics/3706953/">here</a>). </p>
 </li>
 <li><p>The main board can be incorporated into the main control module board since the solenoid valve is operated at a distance using wires. This reduces the amount of wiring involved and could reduce the overall PCB size, decreasing the cost of manufacturing PCBs.</p>
 </li>
-<li><p>Decrease the PCB size as much as possible. If the entire PCB is to be replaced if faulty, accessible pins is less of a concern. </p>
+<li><p>Decrease the PCB size as much as possible. If the entire PCB is to be replaced if faulty, keeping pins accessible is less of a concern. </p>
 </li>
-<li><p>Include a voltage regulator which steps down the high-voltage rail. It is easy to reduce the power consumption by a significant amount by actuating the valve using 6V rather than 12V. However, in choosing the amount of voltage to step down to, the voltage lost due to the H-Bridge must be taken into account (as the voltage across the valve terminals must be sufficiently large to actuate the valve). For example, if the <code>L298P</code> is to be used, a 8V power voltage regulator is an appropriate and is not too expensive (e.g. around £1.10 <a href="http://uk.farnell.com/rohm/ba08cc0wfp-e2/ldo-fixed-8v-1a-to-252-5/dp/2342866?st=power%20voltage%20regulator">here</a>). Since the valve will be controled quite slowly (SEE HERE), the decrease in response time is not a significant problem. </p>
+<li><p>Include a voltage regulator which steps down the high-voltage rail. It is easy to reduce the power consumption by a significant amount by actuating the valve using 6V rather than 12V. However, in choosing the amount of voltage to step down to, the voltage lost due to the H-Bridge must be taken into account (as the voltage across the valve terminals must be sufficiently large to actuate the valve). For example, if the <code>L298P</code> is to be used, an 8V power voltage regulator is appropriate and is not too expensive (e.g. around £1.10 <a href="http://uk.farnell.com/rohm/ba08cc0wfp-e2/ldo-fixed-8v-1a-to-252-5/dp/2342866?st=power%20voltage%20regulator">here</a>). Since the valve will be controlled quite slowly, the decrease in response time is not a significant problem. </p>
 </li>
 </ul>
 <h3 id="choosing-your-own-components">Choosing Your Own Components</h3>
@@ -490,24 +501,36 @@ If fluid is already flowing, its flow can be hindered or slowed down in order to
 </li>
 <li><p>Component Availability: if components are available in Tanzania (where initial testing for this will begin), significant savings may be may in import and shipping costs, affecting the overall cost of the module. </p>
 </li>
-<li><p>Power draw: the power draws between lower end and higher end H-Bridges does not differ a large amount. Thus this is low priority though having a low power draw remains advantageous. </p>
+<li><p>Power draw: the power draws between lower end and higher end H-Bridges does not differ a large amount. Thus this is a low priority though having a low power draw remains advantageous. </p>
 </li>
-<li><p>Additional features: advanced H-Bridges include additional features such as a thermal flag. This are unlikely to be needed in most cases but may be useful.  </p>
+<li><p>Additional features: advanced H-Bridges include additional features such as a thermal flag. These features are unlikely to be needed in most cases but may be useful.  </p>
 </li>
 </ul>
+<p><strong>However, why use a H-Bridge in the first place?</strong> As mentioned in the previous section, a MOSFET and diode can be used for a far lower cost. If this is taken, the MOSFET must be chosen such that:</p>
+<ul>
+<li>The MOSFET full activates when the microcontroller output pin is high i.e. the gate threshold voltage should exceed the microcontroller output voltage.</li>
+<li>The MOSFET is able to function with a high voltage power supply.</li>
+<li>The MOSFET is able to provide sufficient current to the valve (this is on the order of 0.5 A).</li>
+<li>The MOSFET resistance (Rds) is sufficiently low so that it doesn&#39;t become too warm, perhaps less than 0.1 &#8486;.</li>
+</ul>
+<p><strong>Note</strong>: above recommendations drawn from <a href="https://electronics.stackexchange.com/questions/244217/mosfet-as-a-switch-to-control-12-solenoid-valves-using-arduino">this StackExchange article</a> which should provide a good place to start!</p>
 <h4 id="choosing-a-valve">Choosing a Valve</h4>
 <p>The factors to be considered when choosing/designing a solenoid valve (in what we believe to be decreasing priority) are:</p>
 <ul>
-<li><p>Power draw: the power draws can vary significantly between valves and must be matched well to the solar panel to be used. </p>
-</li>
-<li><p>Water pressure requirements: different valves require different water pressures to be reliable. <strong>A worthwhile test to run is to find the pressure input required to give the maximal flow-rate through the photocatalyst, 6 L/hour.</strong> It would then be useful to convert this into a height at which the water reservoir must be held and to check whether this is reasonable. </p>
-</li>
 <li><p>Cost: the cost of the H-Bridge contributes significantly to the cost of this submodule and the overall project. Reducing costs even by small amounts can give significant gains if large quantities are produced. </p>
 </li>
 <li><p>Component Availability: if components are available in Tanzania (where initial testing for this will begin), significant savings may be may in import and shipping costs, affecting the overall cost of the module. </p>
 </li>
+<li><p>Water pressure requirements: different valves require different water pressures to be reliable. <strong>A worthwhile test to run is to find the pressure input required to give the maximal flow-rate through the photocatalyst, 6 L/hour.</strong> It would then be useful to convert this into a height at which the water reservoir must be held and to check whether this is reasonable. </p>
+</li>
+<li><p>Power draw: the power draws can vary significantly between valves and must be matched well to the solar panel to be used. </p>
+</li>
 </ul>
+<h2 id="that-s-all-from-me-">That&#39;s all from me!</h2>
+<p>Feel free to get in touch if you have any more questions!</p>
 
+      </article>
+    
             </div>
         </div>
     </div>

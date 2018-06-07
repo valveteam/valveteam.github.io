@@ -1,0 +1,28 @@
+{% extends "layout.njk" %}
+
+{% from "macros/banner.njk" import banner %}
+
+{% block head %}
+    <title>{{ site.title }} | Overview</title>
+{% endblock %}
+
+{% block content %}
+    <div class="grid-container">
+        <div class="grid-x grid-margin-x">
+            <div class="cell auto page-titles">
+                <h1>System Overview</h1>
+                <h2>Our system's capabilities at a glance</h2>
+            </div>
+        </div>
+    </div>
+
+    {{ banner('/images/system-image.jpg', 'Picture of Final Prototype', true) }}
+
+    <div class="grid-container">
+        <div class="grid-x grid-margin-x">
+            <div class="cell auto">
+                {% markdown "docs/overall/system_overview.md" %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

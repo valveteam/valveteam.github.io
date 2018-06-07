@@ -5,6 +5,7 @@ nav.main {
 
   > ul.menu {
     height: $header-size;
+    padding: 0 0.5rem;
 
     > li > a {
       line-height: $header-size;
@@ -20,9 +21,13 @@ nav.main {
     margin-top: -40px;
   }
 
-  .github-link {
+  .icon-link {
     line-height: $header-size;
-    padding: 0 1rem;
+    padding: 0 0.5rem;
+
+    &:last-child {
+      padding-right: 0;
+    }
   }
 }
 

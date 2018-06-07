@@ -42,19 +42,26 @@
             <div class="cell auto">
                 <nav class="main">
     <ul class="dropdown menu" data-dropdown-menu>
-        <li><a href="#">About</a></li>
+        <li><a href="/overview.html">Overview</a></li>
         <li>
             <a href="#">Docs</a>
             <ul class="menu">
                 <li><a href="/control.html">Control Module</a></li>
                 <li><a href="/flow.html">Flow Module</a></li>
                 <li><a href="/lighting.html">Lighting Module</a></li>
+                <li><a href="/enclosures.html">Initial Enclosures</a></li>
             </ul>
         </li>
+        <li><a href="/principles.html">Principles</a></li>
+        <li><a href="/teamwork.html">Teamwork</a></li>
     </ul>
 
-    <a href="https://www.github.com/valveteam" class="github-link">
+    <a href="https://www.github.com/valveteam" class="icon-link github-link">
         <i class="fab fa-github"></i>
+    </a>
+
+    <a href="https://drive.google.com/open?id=1tVCJ_OA8gJL3nt0VkBkX7JLoFxgfmyr1" class="icon-link google-drive-link">
+        <i class="fab fa-google-drive"></i>
     </a>
 </nav>
 
@@ -76,7 +83,7 @@
     </div>
 
     
-    <div class="banner">
+    <div class="banner small normal">
         <img src="images/control-module.png" alt="Control Module Circuit Board">
     </div>
 
@@ -84,23 +91,20 @@
     <div class="grid-container">
         <div class="grid-x grid-margin-x">
             <div class="cell auto">
-                <hr>
-<p>author: Jason Too
-lastUpdated: 4-6-2018</p>
-<h2 id="email-jyjt3-cam-ac-uk">email: <a href="mailto:jyjt3@cam.ac.uk">jyjt3@cam.ac.uk</a></h2>
-<h1 id="the-control-module">The Control Module</h1>
-<p><img src="https://imgur.com/bj9PgSz.jpg" alt="The Control Module"></p>
-<h2 id="introduction">Introduction</h2>
-<p>The control module was designed to implement part of our team&#39;s proposed solution to meet the objectives of the design specification. The module was implemented to interface between the <strong>flow module</strong> and <strong>light module</strong> so that the right flow rates can be achieved alongside with some user debugging features.
-This is intended to describe the hardware and software functionality of the <strong>control module</strong> for the <em>Solar Powered Valve</em>. </p>
-<p><a href="#mistakes-in-the-design">NOTE</a> :</p>
-<ul>
-<li>AREF Pin in the Schematic should be <strong>FLOATING</strong> and <strong>NOT</strong> left connected to <strong>GROUND</strong> as the <a href="#control-module-schematic">schematic</a> &amp; <a href="#control-module-pcb">PCB</a> suggests. Doing this may result in damage being done to the Arduino. </li>
-<li><p>The I2C repeaters <strong>WILL</strong> cause the I2C on the Arduino Micro to malfunction if not connected to the <strong>light module</strong> due to the lack of pull up resistors.</p>
+                
+      <article class="markdown">
+        
+        <div class="frontmatter">
+           <p class="author">By <a href="mailto:jyjt3@cam.ac.uk">Jason Too</a></p>
+           <p class="updated">Last Updated June 7th 2018</p>
+        </div>
+      
+        <h1 id="the-control-module">The Control Module</h1>
 <!-- TOC -->
-</li>
-<li><p><a href="#introduction">Introduction</a></p>
-</li>
+
+<ul>
+<li><a href="#the-control-module">The Control Module</a><ul>
+<li><a href="#introduction">Introduction</a></li>
 <li><a href="#design-process">Design Process</a><ul>
 <li><a href="#design-specifications">Design Specifications</a><ul>
 <li><a href="#functionality">Functionality</a></li>
@@ -123,6 +127,7 @@ This is intended to describe the hardware and software functionality of the <str
 <li><a href="#adding-an-integrator-to-the-input">Adding an integrator to the input</a></li>
 <li><a href="#the-slow-pwm-code">The slow PWM code</a></li>
 <li><a href="#debug-features">Debug features</a></li>
+<li><a href="#sample-output">Sample output</a></li>
 </ul>
 </li>
 </ul>
@@ -134,8 +139,19 @@ This is intended to describe the hardware and software functionality of the <str
 </ul>
 </li>
 </ul>
+</li>
+</ul>
 <!-- /TOC -->
 
+<p><img src="https://imgur.com/bj9PgSz.jpg" alt="The Control Module"></p>
+<h2 id="introduction">Introduction</h2>
+<p>The control module was designed to implement part of our team&#39;s proposed solution to meet the objectives of the design specification. The module was implemented to interface between the <strong>flow module</strong> and <strong>light module</strong> so that the right flow rates can be achieved alongside with some user debugging features.
+This is intended to describe the hardware and software functionality of the <strong>control module</strong> for the <em>Solar Powered Valve</em>. </p>
+<p><a href="#mistakes-in-the-design">NOTE</a> :</p>
+<ul>
+<li>AREF Pin in the Schematic should be <strong>FLOATING</strong> and <strong>NOT</strong> left connected to <strong>GROUND</strong> as the <a href="#control-module-schematic">schematic</a> &amp; <a href="#control-module-pcb">PCB</a> suggests. Doing this may result in damage being done to the Arduino. </li>
+<li>The I2C repeaters <strong>WILL</strong> cause the I2C on the Arduino Micro to malfunction if not connected to the <strong>light module</strong> due to the lack of pull up resistors.</li>
+</ul>
 <h2 id="design-process">Design Process</h2>
 <p>To implement the control module, there were three key design factors to consider and engineer towards. </p>
 <ul>
@@ -215,60 +231,63 @@ The software uses standard Arduino libraries as well as a BH1750 library for the
 <li><a href="#tunable-functionality">Tunable functionality</a></li>
 <li><a href="#adding-an-integrator-to-the-input">Integrated Input</a></li>
 <li><a href="#the-slow-pwm-code">&#39;Slow&#39; PWM</a></li>
-<li><p><a href="#debug-features">Serial Debug</a></p>
+<li><a href="#debug-features">Serial Debug</a>
+These features which are explained in more detail later are incoperated into the software to ensure robust and reliable operation of the circuits. </li>
+</ul>
+<p><img src="https://github.com/valveteam/documentation/blob/master/submodules/control_res/control_flow_chart.png?raw=true" alt="Software flow chart"></p>
+<p>From the flow chart above, we can see that the system boots up in a state where all the outputs are zero so that in the odd event that loop code does not run, the valve will be closed and no current will be flowing out of the H-bridges. Moreover, when reading the light input, the light levels are averaged across the period of the duty cycle so that we are determining the flow rate of the water reactor based on the total amount of light incident on the phtocatalytic filter. By using a &#39;slow&#39; PWM, we are able to obtain a linear flow that varies from 0% (always closed) to 100% (always open) from the solenoid valve. Finally, the serial debug flushes all the variables used in deciding on the flow rate onto the serial for the user to read before returning to top of the loop function again.  </p>
 <h4 id="tunable-functionality">Tunable functionality</h4>
 <p>The three trimmers have output voltages ranging from 0V to 5V. These voltage inputs are then fed into the Arduino&#39;s analog input pins to return an integer value between 0 to 1023. We have then integrated this input into the code so that the lower and upper trigger bounds can be varied. </p>
-<pre><code class="language-cpp">//Changing pulse width
-// note that analog read is between 0 and 1023
-pWidth = 1000 + (9000.00*analogRead(analogPin3)/1023.00); //goes from 1 Hz to 0.1 Hz.
+<pre><code class="language-cpp">  //Changing pulse width
+  // note that analog read is between 0 and 1023
+  pWidth = 1000 + (9000.00*analogRead(analogPin3)/1023.00); //goes from 1 Hz to 0.1 Hz.
 
-//tuning circuit
-lBound = analogRead(analogPin1) + 500; // lower bound from 500 - 1523
-uBound = (analogRead(analogPin2)*2) + 19000; //upper bound from 19000 - 21046 </code></pre>
+  //tuning circuit
+  lBound = analogRead(analogPin1) + 500; // lower bound from 500 - 1523
+  uBound = (analogRead(analogPin2)*2) + 19000; //upper bound from 19000 - 21046 </code></pre>
 <h4 id="adding-an-integrator-to-the-input">Adding an integrator to the input</h4>
 <p>As the light levels may be very variable with animals walking in front of it or just simple overcast, the input was averaged acrossed the period of the duty cycle so that the average light level was then used to determine the duty cycle for the next period.</p>
-<pre><code class="language-cpp">//BH1750 - reading light levels
-//Averages the light level wrt pWidth
-luxAvg=0;
-while (i&lt;pWidth)
-{
-  lux = lightMeter.readLightLevel();
-  luxAvg = luxAvg+lux;
-  i++;
-};
-luxAvg = luxAvg/pWidth;
-i=0;</code></pre>
+<pre><code class="language-cpp">  //BH1750 - reading light levels
+  //Averages the light level wrt pWidth
+  luxAvg=0;
+  while (i&lt;pWidth)
+  {
+    lux = lightMeter.readLightLevel();
+    luxAvg = luxAvg+lux;
+    i++;
+  };
+  luxAvg = luxAvg/pWidth;
+  i=0;</code></pre>
 <h4 id="the-slow-pwm-code">The slow PWM code</h4>
 <p>The slow PWM code is used to extend the period of the duty cycle so that at lower light levels, the duty cycle is not too small such that it exceeds the 20 Hz limit and thus won&#39;t be operational.</p>
-<pre><code class="language-cpp">  //solenoid varying
-  tau = pWidth*((lux-lBound)/(uBound-lBound)); //goes to zero when lux is at lBound and to one when lux is at uBound
-  digitalWrite(sPin2, HIGH);
-  digitalWrite(LED_BUILTIN, HIGH); 
-  delay(tau);                       
-  digitalWrite(sPin2, LOW);
-  digitalWrite(LED_BUILTIN, LOW);
-  delay(pWidth-tau);</code></pre>
+<pre><code class="language-cpp">    //solenoid varying
+    tau = pWidth*((lux-lBound)/(uBound-lBound)); //goes to zero when lux is at lBound and to one when lux is at uBound
+    digitalWrite(sPin2, HIGH);
+    digitalWrite(LED_BUILTIN, HIGH); 
+    delay(tau);                       
+    digitalWrite(sPin2, LOW);
+    digitalWrite(LED_BUILTIN, LOW);
+    delay(pWidth-tau);</code></pre>
 <h4 id="debug-features">Debug features</h4>
 <p>By using the Arduino IDE, we can obtain the period of the duty cycle, light levels, upper bound, lower bound and the state of the valve using the serial monitor.</p>
-<pre><code class="language-cpp">Serial.print(&quot;Period: &quot;);  
-Serial.print(pWidth/1000);
-Serial.print(&quot; || &quot;); 
-Serial.print(&quot;Light: &quot;);  
-Serial.print(luxAvg); 
-Serial.print(&quot; || &quot;);
-Serial.print(&quot;Upper Bound: &quot;);  
-Serial.print(uBound);
-Serial.print(&quot; || &quot;); 
-Serial.print(&quot;Lower Bound: &quot;);  
-Serial.print(lBound);
-Serial.print(&quot; || &quot;);  
-Serial.print(&quot;State of Valve: &quot;);  
-Serial.print(percentage); 
-Serial.println(&quot;%&quot;); </code></pre>
-<p><strong><em>Sample output</em></strong>
-<img src="https://github.com/valveteam/control-module/blob/master/Code/Control/control_bh1750/serial_output.JPG?raw=true" alt="Serial Output"></p>
-</li>
-</ul>
+<pre><code class="language-cpp">  Serial.print(&quot;Period: &quot;);  
+  Serial.print(pWidth/1000);
+  Serial.print(&quot; || &quot;); 
+  Serial.print(&quot;Light: &quot;);  
+  Serial.print(luxAvg); 
+  Serial.print(&quot; || &quot;);
+  Serial.print(&quot;Upper Bound: &quot;);  
+  Serial.print(uBound);
+  Serial.print(&quot; || &quot;); 
+  Serial.print(&quot;Lower Bound: &quot;);  
+  Serial.print(lBound);
+  Serial.print(&quot; || &quot;);  
+  Serial.print(&quot;State of Valve: &quot;);  
+  Serial.print(percentage); 
+  Serial.println(&quot;%&quot;); </code></pre>
+<h4 id="sample-output">Sample output</h4>
+<p>These are the values which are being output by the serial output. By simply running the serial monitor on the Arduino IDE, the user can easily monitor all the crucial parameters of the system. No programming knowledge is required for this functionality which should make it easier for data collection as well as calibrating multiple solar powered valves. 
+<img src="https://github.com/valveteam/documentation/blob/master/submodules/control_res/serial_output.png?raw=true" alt="Serial Output"></p>
 <h2 id="recommendations">Recommendations</h2>
 <p>In our testing the control module satisfies all the design specifications that was defined at the beginning of the document. Indeed this is satisfactory but there are several possible improvements and changes that could be made to improve the design further in terms of costs and simplicity. </p>
 <h3 id="mistakes-in-the-design">Mistakes in the design</h3>
@@ -281,13 +300,17 @@ Serial.println(&quot;%&quot;); </code></pre>
 <li>When deployed and after all the debugging and adjustments have been made, a better PWM can be realised by changing the way the current code handles cases at which the pulse width is less than 50ms (20 Hz) by changing the pulse width instead of setting a threshold for the width upon achieving a certain rate. That way, we can technically achieve extremely low duty cycles for really delicate applications.</li>
 <li>Remove redundancies. We have included several extra components for debugging and testing purposes. For this circuit we included two I2C repeaters so that we can easily interface between the two different I2C light sensors.</li>
 <li>When deployed and after all the debugging and adjustments have been made, a better PWM can be realised by changing the way the current code handles cases at which the pulse width is less than 50ms (20 Hz) by changing the pulse width instead of setting a threshold for the width upon achieving a certain rate. That way, we can technically achieve extremely low duty cycles for really delicate applications.</li>
+<li>Using the expansion port to incorporate a flow rate sensor so that negative feedback can be used to control the flow rate precisely using PID controllers. Arduinos only have one I2C port therefore another model should also be used in this case if we are to also communicate with the light sensor via I2C. </li>
 </ul>
 <h3 id="choosing-your-own-components">Choosing your own components</h3>
 <ul>
 <li>The Arduino Micro was selected because of it&#39;s simplicity as well as having a lot of documentation on it&#39;s capabilities and applications online. Other microcontrollers could also be used but careful consideration to the design objectives must be made so that it can be achieved. </li>
 <li>Neglecting the I2C repeaters may be OK. Since the Arduino has an input HIGH of 3V, it would still be functional however, the noise margin is relatively small. Moreover, the capacitance may be detrimental to it&#39;s performance over a long distance. </li>
+<li>For the absolute final design, it is alright to remove one the the light sensor molex connectors as it was put in place in case of redundancies. </li>
 </ul>
 
+      </article>
+    
             </div>
         </div>
     </div>

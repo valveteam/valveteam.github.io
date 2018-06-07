@@ -1,5 +1,6 @@
 import babelify from 'babelify';
 import browserify from 'browserify';
+import fm from 'front-matter';
 import gulp from 'gulp';
 import autoprefixer from 'gulp-autoprefixer';
 import cleanCSS from 'gulp-clean-css';
@@ -7,6 +8,7 @@ import concat from 'gulp-concat';
 import connect from 'gulp-connect';
 import data from 'gulp-data';
 import image from 'gulp-image';
+import newer from 'gulp-newer';
 import render from 'gulp-nunjucks-render';
 import rename from 'gulp-rename';
 import sass from 'gulp-sass';
@@ -14,6 +16,7 @@ import sourcemaps from 'gulp-sourcemaps';
 import uglify from 'gulp-uglify';
 import log from 'gulplog';
 import marked from 'marked';
+import moment from 'moment';
 import markdown from 'nunjucks-markdown';
 import source from 'vinyl-source-stream';
 import buffer from 'vinyl-buffer';
@@ -21,7 +24,28 @@ import watchify from 'watchify';
 
 // setup the markdown support within nunjucks
 function manageEnvironment(env) {
-  markdown.register(env, marked);
+  markdown.register(env, (markdown) => {
+    const processed = fm(markdown);
+    const markup = marked(processed.body);
+
+    let frontmatter = '';
+
+    if (processed.frontmatter) {
+      frontmatter = `
+        <div class="frontmatter">
+           <p class="author">By <a href="mailto:${processed.attributes.email}">${processed.attributes.author}</a></p>
+           <p class="updated">Last Updated ${moment(processed.attributes.lastUpdated, 'DD-MM-YYYY').format('MMMM Do YYYY')}</p>
+        </div>
+      `;
+    }
+
+    return `
+      <article class="markdown">
+        ${frontmatter}
+        ${markup}
+      </article>
+    `;
+  });
 }
 
 const SASS_INCLUDE_PATHS = [
@@ -54,6 +78,7 @@ const paths = {
 
 export function images() {
   return gulp.src(paths.images.src)
+    .pipe(newer(paths.images.dest))
     .pipe(image())
     .pipe(gulp.dest(paths.images.dest))
 }

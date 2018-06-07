@@ -42,19 +42,26 @@
             <div class="cell auto">
                 <nav class="main">
     <ul class="dropdown menu" data-dropdown-menu>
-        <li><a href="#">About</a></li>
+        <li><a href="/overview.html">Overview</a></li>
         <li>
             <a href="#">Docs</a>
             <ul class="menu">
                 <li><a href="/control.html">Control Module</a></li>
                 <li><a href="/flow.html">Flow Module</a></li>
                 <li><a href="/lighting.html">Lighting Module</a></li>
+                <li><a href="/enclosures.html">Initial Enclosures</a></li>
             </ul>
         </li>
+        <li><a href="/principles.html">Principles</a></li>
+        <li><a href="/teamwork.html">Teamwork</a></li>
     </ul>
 
-    <a href="https://www.github.com/valveteam" class="github-link">
+    <a href="https://www.github.com/valveteam" class="icon-link github-link">
         <i class="fab fa-github"></i>
+    </a>
+
+    <a href="https://drive.google.com/open?id=1tVCJ_OA8gJL3nt0VkBkX7JLoFxgfmyr1" class="icon-link google-drive-link">
+        <i class="fab fa-google-drive"></i>
     </a>
 </nav>
 
@@ -76,7 +83,7 @@
 </div>
 
 
-    <div class="banner">
+    <div class="banner normal normal">
         <img src="images/valve_test.png" alt="Solar Valve Testing">
     </div>
 
@@ -221,8 +228,13 @@
     <div class="module-card">
         <img src="images/flow-module.png" alt="Flow Module Circuit Board">
         <h4>Flow Module</h4>
-        <p><p>The flow rate module is an integral sub-module which modules flow rate dependent on some input. It consists of two main components. The flow is passively modulated using a solenoid valve, and an H-bridge will allow the control module to interface with the flow module. The H-bridge serves to drive enough current to the solenoid valve to open or close it.</p>
-</p>
+        <p>
+      <article class="markdown">
+        
+        <p>The flow rate module is an integral sub-module which modules flow rate dependent on some input. It consists of two main components. The flow is passively modulated using a solenoid valve, and an H-bridge will allow the control module to interface with the flow module. The H-bridge serves to drive enough current to the solenoid valve to open or close it.</p>
+
+      </article>
+    </p>
         <a href="/flow.html">Find Out More</a>
     </div>
 
@@ -233,8 +245,13 @@
     <div class="module-card">
         <img src="images/control-module.png" alt="Control Module Circuit Board">
         <h4>Control Module</h4>
-        <p><p>The control module is the central hub of our solution. The module uses an Arduino Micro and interfaces the microcontroller with the light sensor module, which provides the light level in lux as an input to the control module, and the flow module, to which an output corresponding to the state of the solenoid valve is provided. The correct flow rate response, alongside some debugging features, are therefore provided via this module.</p>
-</p>
+        <p>
+      <article class="markdown">
+        
+        <p>The control module is the central hub of our solution. The module uses an Arduino Micro and interfaces the microcontroller with the light sensor module, which provides the light level in lux as an input to the control module, and the flow module, to which an output corresponding to the state of the solenoid valve is provided. The correct flow rate response, alongside some debugging features, are therefore provided via this module.</p>
+
+      </article>
+    </p>
         <a href="/control.html">Find Out More</a>
     </div>
 
@@ -245,8 +262,13 @@
     <div class="module-card">
         <img src="images/lighting-module.png" alt="Light Module Circuit Board">
         <h4>Light Sensor Module</h4>
-        <p><p>The light module is the primary sensor module in the system. The module has two light sensor devices, the BH1750 and the VEML6030, which are used to measure the ambient light level and report this level back to the control module via an I2C interface. The module is also designed to support on-board voltage regulation if the application demands solar panel voltages to be fed into the sensor module directly.</p>
-</p>
+        <p>
+      <article class="markdown">
+        
+        <p>The light module is the primary sensor module in the system. The module has two light sensor devices, the BH1750 and the VEML6030, which are used to measure the ambient light level and report this level back to the control module via an I2C interface. The module is also designed to support on-board voltage regulation if the application demands solar panel voltages to be fed into the sensor module directly.</p>
+
+      </article>
+    </p>
         <a href="/lighting.html">Find Out More</a>
     </div>
 

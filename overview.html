@@ -1,0 +1,213 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+  
+    <title>Majico Solar Valve | Overview</title>
+
+  <meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+<link href="https://fonts.googleapis.com/css?family=Merriweather:300,400,700|Open+Sans:300,400,600|Oswald:500" rel="stylesheet">
+
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://unpkg.com/@icon/linearicons/linearicons.css">
+
+
+
+<!-- Place favicon.ico in the root directory -->
+
+<link rel="stylesheet" href="styles/main.min.css">
+
+</head>
+
+<body>
+  <!-- Add your site or application content here -->
+  <header class="main">
+    <div class="grid-container">
+        <div class="grid-x grid-margin-x">
+            <div class="cell small-4">
+                <a href="/" class="logo">
+    <span class="valve">valve</span><span class="team">team</span>
+</a>
+
+            </div>
+
+            <div class="cell auto">
+                <nav class="main">
+    <ul class="dropdown menu" data-dropdown-menu>
+        <li><a href="/overview.html">Overview</a></li>
+        <li>
+            <a href="#">Docs</a>
+            <ul class="menu">
+                <li><a href="/control.html">Control Module</a></li>
+                <li><a href="/flow.html">Flow Module</a></li>
+                <li><a href="/lighting.html">Lighting Module</a></li>
+                <li><a href="/enclosures.html">Initial Enclosures</a></li>
+            </ul>
+        </li>
+        <li><a href="/principles.html">Principles</a></li>
+        <li><a href="/teamwork.html">Teamwork</a></li>
+    </ul>
+
+    <a href="https://www.github.com/valveteam" class="icon-link github-link">
+        <i class="fab fa-github"></i>
+    </a>
+
+    <a href="https://drive.google.com/open?id=1tVCJ_OA8gJL3nt0VkBkX7JLoFxgfmyr1" class="icon-link google-drive-link">
+        <i class="fab fa-google-drive"></i>
+    </a>
+</nav>
+
+            </div>
+        </div>
+    </div>
+</header>
+
+
+  <main class="content">
+      
+    <div class="grid-container">
+        <div class="grid-x grid-margin-x">
+            <div class="cell auto page-titles">
+                <h1>System Overview</h1>
+                <h2>Our system's capabilities at a glance</h2>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="banner small normal">
+        <img src="/images/system-image.jpg" alt="Picture of Final Prototype">
+    </div>
+
+
+    <div class="grid-container">
+        <div class="grid-x grid-margin-x">
+            <div class="cell auto">
+                
+      <article class="markdown">
+        
+        <div class="frontmatter">
+           <p class="author">By <a href="mailto:ms2314@cam.ac.uk">Mrinank Sharma</a></p>
+           <p class="updated">Last Updated June 6th 2018</p>
+        </div>
+      
+        <h1 id="the-overall-system">The Overall System</h1>
+<!-- TOC -->
+
+<ul>
+<li><a href="#the-overall-system">The Overall System</a><ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#key-requirements">Key Requirements</a></li>
+<li><a href="#solution-overview">Solution Overview</a></li>
+<li><a href="#power-draw-calculations">Power Draw Calculations</a></li>
+<li><a href="#from-prototype-to-final-design">From Prototype to Final Design</a></li>
+<li><a href="#rough-costings">Rough Costings</a></li>
+<li><a href="#closing-comments">Closing Comments</a></li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+<h2 id="introduction">Introduction</h2>
+<p>Hi there. If you are looking for a brief overview of our solar controlled valve, you are in the right place! </p>
+<p>Just a quick recap: access to drinking water is a major problem in the world. 844 million people don&#39;t have access to clean water and 31% of schools don&#39;t either (WaterAid). Clearly, this isn&#39;t okay but <a href="http://www.majico.org/">Majico</a> have developed a way of solving this - passing water over a photocatalyst to purify it and make it safe to drink. But there is a problem - the time that the photocatalyst takes to act on the water depends on the light level and thus some method of modulating flow rate dependant on the light level is required. To solve this, we have developed a light controlled valve. </p>
+<p>The purpose of this document is to provide a brief overview of the system to understand the overall function. We also include necessarily steps to make the final product and give a rough idea of cost. </p>
+<h2 id="key-requirements">Key Requirements</h2>
+<p>A full specification was drawn for this project; this can be found <a href="https://docs.google.com/document/d/1mbmDHw7nYxWOprYOgamT1pU3FCUFVtE7_Fpei4cH_A0/edit?usp=sharing">here</a>. The key points from this document to note are:</p>
+<ul>
+<li><p>The system must be fail-safe. In the absence of light <em>or if anything else goes wrong</em> there should be no flow.</p>
+</li>
+<li><p>The flow control should not be binary. The photocatalyst doesn&#39;t either work if there is enough light and not work if there isn&#39;t enough light! In reality, there is a gradual chang in efficiency (and thus maximum flow rate over the photocatalyst) as the light levels vary.  The solution should thus give a gradual (ideally linear) response between flow rate and light intensity.</p>
+</li>
+<li><p>Adding to the above point, there are also lower and upper light intensity thresholds below which no flow is desired and above which the flow rate should not be increased. However, the exact values for these thresholds may depend on the photocatalyst area, final reaction design, e.t.c. There are a number of unknown factors and thus these thresholds must not be set but rather be tunable by the operator. </p>
+</li>
+</ul>
+<h2 id="solution-overview">Solution Overview</h2>
+<p>The approach we took for this problem is to use solar power, favouring an electrical approach over a mechanical approach; the mix of tunability requirements and an (ideally) linear response ruled out a mechanical approach.</p>
+<p><strong>Note</strong>: whilst the final product is to be powered using solar power, our prototype was only tested using a bench power supply and designed to be robust (i.e. accept a wide range of input voltages). </p>
+<p>The final prototype we made consists of the following components.</p>
+<ol>
+<li>The <em>central control</em> submodule which reads external sensors and sends out signals. <a href="https://valveteam.github.io/control.html">Find out more...</a></li>
+<li>The <em>light sensor</em> submodule which detects light intensity. <a href="https://valveteam.github.io/lighting.html">Find out more...</a></li>
+<li>The <em>flow control</em> submodule which modulates flow rate dependent on an electrical input signal. Here, we used a solenoid valve. <a href="https://valveteam.github.io/flow.html">Find out more...</a></li>
+</ol>
+<p>The image below shows the final prototype that we made. 
+<img src="https://raw.githubusercontent.com/valveteam/documentation/master/overall/system_overview_res/overview.png" alt="What we made"></p>
+<h2 id="power-draw-calculations">Power Draw Calculations</h2>
+<p>By looking at the datasheets for components used within the three submodules above, absolute maximum power ratings for key components were found and used to calculate an expected peak power draw.</p>
+<p>Items consuming significant power are:</p>
+<ul>
+<li>Microcontroller (Arduino Micro): (maximum rating of) 1 W.</li>
+<li>Solenoid Valve: 4 W (Note: this is the cheaper Adafruit valve - see the flow control documentation for more information).</li>
+<li>H-Bridge / Valve Driver circuitry: (maximum rating of) approx 1.1 W.</li>
+<li>10 LEDs: 0.6 W.</li>
+</ul>
+<p>This gives a peak power draw of 7 W. When testing, we found the peak power draw to be 6.12 W, verifying the above calculations. These calculations are (intentionally) an overestimate since the absolute maximum ratings were used. </p>
+<p>These numbers might not have much meaning to you; the key thing here is that 10W solar panels (more than enough to power our system) are readily available and cost around £25.00 e.g. <a href="https://www.amazon.co.uk/ECO-WORTHY-Portable-Battery-Charger-Alligator/dp/B017K6PH1S/ref=sr_1_2?ie=UTF8&amp;qid=1528322587&amp;sr=8-2&amp;keywords=10W+solar">here</a>. </p>
+<p>Another point: whilst power consumption was considered by all team members, it was by no means optimised for in the prototype made. Significant power savings could be made by optimising component choice and other techniques (e.g. stepping down the valve driving voltage could give a significant saving, see <a href="https://valveteam.github.io/flow.html">here</a>).</p>
+<h2 id="from-prototype-to-final-design">From Prototype to Final Design</h2>
+<p>In order to go from the prototype to a final design, a number of steps need to be taken. </p>
+<ol>
+<li><p>Evaluation of Modularity. </p>
+<p> Our prototype was designed in three distinct parts and subsequently, three separate printed circuit boards were manufactured. Modularity in design worked well, allowing isolation of component failure and effective teamwork. However, for the final design the <em>flow control</em> and <em>central control</em> submodules can certainly be incorporated into one PCB. This has the advantages of reducing cost (as an estimate, we suspect that removing the connectors and wires and the subsequent reduction in board area will reduce the cost by about £4). Furthermore, it reduces the number of points of failure - poor connections can often lead to reliability issues. However, this would increase the cost of board replacements (since a larger PCB would have to be replaced when earlier only one would have to be). Incremental improvements are also made more difficult. </p>
+</li>
+<li><p>Understand Solar Power.</p>
+<p> Even though our systems have been designed to be robust with regards to input voltage, there are a number of unknowns that need to be investigated.</p>
+<ul>
+<li><p>What timescales over which does the power/voltage output of the solar panel change? For example, if the solar panel is momentarily obstructed, how quickly does the output voltage fall? This is a pertinent question since such obstructions are likely in actual use (e.g. vehicles driving past, human walking past). </p>
+</li>
+<li><p>What effect does an intermittent power supply have on the lifetime of electronic components? An area of particular concern is the microcontroller used - not only could its lifetime be greatly reduced but if the microcontroller becomes damaged, what happens to the valve output? The answers to these questions are currently unknown. </p>
+<p>Once these unknowns have been characterised through intensive testing, a decision must be made on whether to power the system directly using a solar panel or to use the panel to charge a battery. </p>
+</li>
+</ul>
+</li>
+<li><p>Understand the constraints.</p>
+<p> The constraints which bind a design are crucial for appropriate design decisions and component choice and the constraints should be better characterised. It was thought that power draw was the most significant constraint but the power draw calculations above suggest that this may not be the case. So is cost the most significant constraint? By better understanding the constraints, a better final design can be produced. </p>
+</li>
+<li><p>The recommendations made in the documentation of each sub-module should be reviewed and incorporated if appropriate. </p>
+</li>
+<li><p>Remove redundancy and finalise component choice. </p>
+</li>
+</ol>
+<h2 id="rough-costings">Rough Costings</h2>
+<p>Even though a final proposal is by no means set in stone at this stage, a rough idea of costings may be informative. Using similar components to our prototype but optimising (somewhat) for cost, we find that an approximate total cost is £45.00 + VAT. Significant items of expenditure are:</p>
+<ul>
+<li>PCB Manufacturing (£15.00 - could be reduced by £3.50 by combining the <em>flow control</em> and the <em>central control</em> submodules).</li>
+<li>Solenoid Valve (£8.00).</li>
+<li>Microcontroller (£3.32).</li>
+<li>Voltage Regulators (£5.50).</li>
+</ul>
+<p>(Prices exclude VAT)</p>
+<p>We believe that this cost could certainly be reduced by more careful component choice and manufacturing certain components e.g. the valve. Note that the cost of a solar panel (or battery and charge controller if required) have <strong>not</strong> been included above. </p>
+<h2 id="closing-comments">Closing Comments</h2>
+<p>That&#39;s it! Hopefully, you found this document helpful and informative.</p>
+<p>If you want to contribute, the next steps would be to take a look through some of the individual submodule documentation (which is far more detailed) and <a href="https://github.com/valveteam">check out our GitHub repository!</a>. There are a number of questions that remain open - if you have any pointers (or data) on these questions, we would really appreciate it!</p>
+<p>Feel free to send any one of the team an email if you have any queries.  </p>
+
+      </article>
+    
+            </div>
+        </div>
+    </div>
+
+  </main>
+
+  <script src="scripts/lib/jquery.min.js"></script>
+  <script src="scripts/lib/foundation.core.min.js"></script>
+  <script src="scripts/lib/foundation.util.mediaQuery.min.js"></script>
+  <script src="scripts/lib/foundation.util.keyboard.min.js"></script>
+  <script src="scripts/lib/foundation.util.box.min.js"></script>
+  <script src="scripts/lib/foundation.util.nest.min.js"></script>
+  <script src="scripts/lib/foundation.dropdown.min.js"></script>
+  <script src="scripts/lib/foundation.dropdownMenu.min.js"></script>
+  <script src="scripts/main.min.js"></script>
+</body>
+
+</html>

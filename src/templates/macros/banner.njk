@@ -1,5 +1,5 @@
-{% macro banner(image, alt='') %}
-    <div class="banner">
+{% macro banner(image, alt='', small=false, micro=false) %}
+    <div class="banner {{ "small" if small else "normal" }} {{ "micro" if micro else "normal" }}">
         <img src="{{ image }}" alt="{{ alt }}">
     </div>
 {% endmacro %}

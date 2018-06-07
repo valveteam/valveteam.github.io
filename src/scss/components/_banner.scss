@@ -16,4 +16,12 @@ $banner-spacing: 60px;
     right: -9999px;
     margin: auto;
   }
+
+  &.small {
+    height: 640px;
+  }
+
+  &.micro {
+    height: 400px;
+  }
 }
