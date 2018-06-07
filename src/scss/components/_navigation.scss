@@ -7,9 +7,18 @@ nav.main {
     height: $header-size;
     padding: 0 0.5rem;
 
+    @include breakpoint(small only) {
+      height: $small-header-size;
+      padding: 0;
+    }
+
     > li > a {
       line-height: $header-size;
       padding: 0 1rem;
+
+      @include breakpoint(small only) {
+        line-height: $small-header-size;
+      }
     }
   }
 
@@ -25,9 +34,17 @@ nav.main {
     line-height: $header-size;
     padding: 0 0.5rem;
 
+    @include breakpoint(small only) {
+      line-height: $small-header-size;
+    }
+
     &:last-child {
       padding-right: 0;
     }
+  }
+
+  @include breakpoint(small only) {
+    justify-content: center;
   }
 }
 

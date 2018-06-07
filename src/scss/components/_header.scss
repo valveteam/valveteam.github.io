@@ -1,3 +1,11 @@
 header.main {
   height: $header-size;
+
+  // Only affects medium screens and down
+  @include breakpoint(small only) {
+    // All CSS in here goes inside the media query
+    height: auto;
+    border-bottom: 1px solid $light-gray;
+    text-align: center;
+  }
 }
