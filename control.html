@@ -167,26 +167,43 @@ This is intended to describe the hardware and software functionality of the <str
 <li>The system is able to provide a linear flow response which is proportionate to the light levels.</li>
 <li>The system has tunable lower and upper thresholds to control the minimum light level to allow flow and maximum light level to completely open the valve.</li>
 <li>The system has tunable pulse widths/duty cycle lengths for easy debugging and can be optimised to improve the reliability of the valve. (the system is no longer restrained by the flow rate as the PWM can be made faster to respond to high flow rates)</li>
-<li>The system boast break out connectors which allows additional functionality to be implemented at a later date. - e.g. flow rate sensor so that a proper PID controller could be put in place to optimise the flow rates.  <h4 id="usability">Usability</h4>
-</li>
+<li>The system boast break out connectors which allows additional functionality to be implemented at a later date. - e.g. flow rate sensor so that a proper PID controller could be put in place to optimise the flow rates.  </li>
+</ul>
+<h4 id="usability">Usability</h4>
+<ul>
 <li>The system must have an input voltage from 6V to 20V.</li>
-<li>The system has a logic HIGH value of 5V.  <h4 id="reliability">Reliability</h4>
-</li>
+<li>The system has a logic HIGH value of 5V.  </li>
+</ul>
+<h4 id="reliability">Reliability</h4>
+<ul>
 <li>The system will always boot up in the correct state to carry out all the functionalities as given above.</li>
-<li>The system should be operational in temperatures between 0-60℃.  <h4 id="performance">Performance</h4>
-</li>
+<li>The system should be operational in temperatures between 0-60℃.  </li>
+</ul>
+<h4 id="performance">Performance</h4>
+<ul>
 <li>The system is able to respond to changes in light within a second. </li>
 <li>The system is limited by the performance of the solenoid valve which is only able to cope with frequencies up to 20 Hz. </li>
-<li>The system software is completely open source and can be altered for other flow regulation uses.  <h4 id="supportability">Supportability</h4>
-</li>
-<li>The system is built from cheap and readily available parts  <h3 id="design-limitations-and-our-solutions">Design limitations and our solutions</h3>
-During the verification process we stumbled across several limitations in the components and circuits built which would hold back the entire prototype from achieving the proposed objectives namely; </li>
+<li>The system software is completely open source and can be altered for other flow regulation uses.  </li>
+</ul>
+<h4 id="supportability">Supportability</h4>
+<ul>
+<li>The system is built from cheap and readily available parts  </li>
+</ul>
+<h3 id="design-limitations-and-our-solutions">Design limitations and our solutions</h3>
+<p>During the verification process we stumbled across several limitations in the components and circuits built which would hold back the entire prototype from achieving the proposed objectives namely; </p>
+<ul>
 <li>The solenoid valve has a maximum frequency of 20Hz so the need for a slow PWM was needed to widen the pulse widths so that lower duty cycles can be achieved reliably. </li>
 <li>The BH1750 outputs logic HIGH of 3.3V which is &#39;incompatible&#39; with the Arduino Micro which has a logic HIGH for 5V. (It would still work but long term damage may affect it&#39;s reliability) Therefore I2C repeaters was added to the circuits so that the voltages can be step up. This also further improves the maximum operating cable length for the light module which is an added bonus.</li>
-<li>On top of that, a point which was made clear to us at a later stage of development by Dr Kabla, we implemented an integrator to the inputs of the circuit so that it averages across the period of the duty cycle and does not just respond to one particular light level at the end of the period cycle, this gives the system as a whole a more accurate measurement of how much light is incident onto the photocatalytic reactor.  <h2 id="implementation">Implementation</h2>
-The control module is split into two main components which are;</li>
-<li>The Hardware which serves are the interface between the software and measuring physical quantities such as light as well as output digital logic values to the flow module  <h3 id="the-hardware">The Hardware</h3>
-The control module boasts</li>
+<li>On top of that, a point which was made clear to us at a later stage of development by Dr Kabla, we implemented an integrator to the inputs of the circuit so that it averages across the period of the duty cycle and does not just respond to one particular light level at the end of the period cycle, this gives the system as a whole a more accurate measurement of how much light is incident onto the photocatalytic reactor.  </li>
+</ul>
+<h2 id="implementation">Implementation</h2>
+<p>The control module is split into two main components which are;</p>
+<ul>
+<li>The Hardware which serves are the interface between the software and measuring physical quantities such as light as well as output digital logic values to the flow module  </li>
+</ul>
+<h3 id="the-hardware">The Hardware</h3>
+<p>The control module boasts</p>
+<ul>
 <li>Power regulation circuits to down-convert high unstable voltage from solar panel to 5V and 3.3V required by the rest of the circuit.</li>
 <li>Power Status LEDs for 12V, 5V and 3.3V</li>
 <li>Arduino Micro as the main microcontroller to integrate <strong>light module</strong> &amp; <strong>solenoid module</strong> to meet the problem specification.</li>
