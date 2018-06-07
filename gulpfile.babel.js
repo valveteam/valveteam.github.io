@@ -15,12 +15,19 @@ import sass from 'gulp-sass';
 import sourcemaps from 'gulp-sourcemaps';
 import uglify from 'gulp-uglify';
 import log from 'gulplog';
+import hljs from 'highlight.js';
 import marked from 'marked';
 import moment from 'moment';
 import markdown from 'nunjucks-markdown';
 import source from 'vinyl-source-stream';
 import buffer from 'vinyl-buffer';
 import watchify from 'watchify';
+
+marked.setOptions({
+  highlight: function(code) {
+    return hljs.highlightAuto(code).value;
+  },
+});
 
 // setup the markdown support within nunjucks
 function manageEnvironment(env) {

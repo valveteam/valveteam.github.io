@@ -1,3 +1,14 @@
 a {
   font-weight: 600;
 }
+
+code {
+  background: none;
+  border: none;
+}
+
+pre {
+  background: lighten($light-gray, 3%);
+  border: 1px solid $medium-gray;
+  margin: 1rem 0;
+}
