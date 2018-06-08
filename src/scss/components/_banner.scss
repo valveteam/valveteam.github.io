@@ -5,7 +5,9 @@ $banner-spacing: 60px;
   overflow: hidden;
   position: relative;
   white-space: nowrap;
-  margin: $banner-spacing 0 $banner-spacing calc((100% - 1170px) / 2);
+  //margin: $banner-spacing 0 $banner-spacing calc((100% - 1170px) / 2);
+  max-width: 1170px;
+  margin: $banner-spacing auto;
 
   img {
     min-width: 100%;
